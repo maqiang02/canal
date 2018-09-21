@@ -1,0 +1,42 @@
+spring:
+  ###################### mysql ###########################
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://saas.database:3506/?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 1017~Fulin
+    #jdbc-url: jdbc:mysql://saas.database:3506/eaglehorn_identity?allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&useSSL=false
+
+server:
+  port: 30100
+  ssl:
+    enabled: false
+  error:
+    whitelabel:
+      enabled: false
+canal:
+  server:
+    hostIp: 127.0.0.1
+    port: 11111
+    destination: example
+    username: canal
+    password: canal
+    batchSize: 1000
+  inputdata:
+    database[0]:
+      databaseName: eaglehorn_identity
+      tableName[0]:
+        name: t_master
+        slaveDatabase: eaglehorn_identity
+        slaveTableName: t_slave
+      tableName[1]:
+        name: t_person
+    database[1]:
+      databaseName: eaglehorn_test
+      tableName[0]:
+        name: t_fv
+      tableName[1]:
+        name: t_person
+
+
+
